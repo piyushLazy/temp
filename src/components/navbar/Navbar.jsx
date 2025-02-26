@@ -1,0 +1,124 @@
+
+
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import Drawer from "./Drawer";
+import "./Navbar.css";
+import logo from "../assets/favicon.png";
+import loginIcon from "../assets/avatar-user-36.svg";
+import questionIcon from "../assets/help.svg";
+
+function Navbar() {
+  const data = {
+    left: {
+      siteLogo: logo,
+      siteName: "Lazyatra",
+      to: "/",
+    },
+    mid: [
+      { id: 1, label: "Packages" },
+      { id: 2, label: "Hotels" },
+      { id: 3, label: "About Us" },
+      { id: 4, label: "Testimonials" },
+      { id: 5, label: "Contact Us" },
+    ],
+    right: {
+      questionIcon: questionIcon,
+      loginIcon: loginIcon,
+    },
+  };
+
+  const [showDrawer, setShowDrawer] = useState(false);
+
+  const toggleDrawer = () => {
+    console.log("Drawer toggled");
+    setShowDrawer(!showDrawer);
+  };
+
+  return (
+    <nav className="navbar-main">
+      <div className="navbar-left">
+
+     {/* Left Section */}
+
+  <Link href="/" className="navbar-left-logo">
+    <Image src={data.left.siteLogo} alt={data.left.siteName} width={40} height={40} />
+  </Link>
+</div>
+
+{/* Middle Section */}
+<div className="navbar-middle">
+  {data.mid.map((item) => (
+    <Link
+      key={item.id}
+      href={`/${item.label.toLowerCase().replace(/\s+/g, "-")}`}
+      className="navbar-link"
+      onMouseOver={() => item.label === "Packages" && toggleDrawer()}
+    >
+      {item.label}
+    </Link>
+  ))}
+</div>
+
+{/* Drawer */}
+{showDrawer && (
+  <div className="drawer">
+    <div className="drawer-content">
+      <div className="column">
+        <h3>All Destinations</h3>
+        <h4>International Destinations</h4>
+        <ul>
+          {["Thailand", "Dubai", "Vietnam", "Bali", "Azerbaijan", "Sri Lanka", "Singapore"].map(
+            (destination, index) => (
+              <li key={index}>{destination}</li>
+            )
+          )}
+        </ul>
+      </div>
+      <div className="column">
+        <h3>Domestic Destinations</h3>
+        <ul>
+          {["Andaman", "Gujarat", "Kerala", "Meghalaya", "Kashmir", "Goa", "Sikkim", "Himachal Pradesh", "Ladakh", "Odisha"].map(
+            (destination, index) => (
+              <li key={index}>{destination}</li>
+            )
+          )}
+        </ul>
+      </div>
+    </div>
+  </div>
+)}
+
+{/* Right Section */}
+<div className="navbar-right">
+  <Image
+    src={data.right.questionIcon}
+    alt="Question Icon"
+    className="navbar-right-questionIcon"
+    width={24}
+    height={24}
+  />
+  <div className="navbar-right-button">
+    <span className="navbar-right-text">Login</span>
+    <Image
+      src={data.right.loginIcon}
+      alt="User Avatar"
+      className="navbar-right-avatar"
+      width={36}
+      height={36}
+    />
+  </div>
+</div>
+
+{/* Drawer Menu */}
+<div className="drawer-menu">
+  <Drawer />
+</div>
+    </nav>
+  );
+}
+
+export default Navbar;

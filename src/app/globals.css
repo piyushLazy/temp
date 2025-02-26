@@ -1,0 +1,72 @@
+:root {
+  --primary-blue: #3d99db;
+  --white: #fff;
+  --primary-blue-10: rgba(61, 153, 219, 0.1);
+  --grays-gray: #737373;
+  --grays-gray-2: #6c6b6b;
+  --grays-gray-3: #272727;
+  --grays-gray-4: #979797;
+  --grays-gray-5: #f2f2f2;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--font-inter), sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-inter), sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: hidden;
+  touch-action: pan-y;
+}
+
+a {
+  text-decoration: none;
+}
+
+.Mode-1 {
+  --black: #111;
+}
+
+/* Headings and Text Styles */
+h1, .DesktopHeadingH1 { font-size: 56px; font-weight: bold; }
+h2, .DesktopHeadingH2 { font-size: 48px; font-weight: bold; }
+h3, .DesktopHeadingH3 { font-size: 40px; font-weight: bold; }
+h4, .DesktopHeadingH4 { font-size: 32px; font-weight: bold; }
+h5, .DesktopHeadingH5 { font-size: 24px; font-weight: bold; }
+h6, .DesktopHeadingH6 { font-size: 20px; font-weight: 600; }
+
+/* Mobile Headings */
+.MobileHeadingH1 { font-size: 48px; font-weight: 600; }
+.MobileHeadingH2 { font-size: 40px; font-weight: 600; }
+.MobileHeadingH3 { font-size: 36px; font-weight: 600; }
+.MobileHeadingH4 { font-size: 30px; font-weight: 600; }
+.MobileHeadingH5 { font-size: 24px; font-weight: 600; }
+.MobileHeadingH6 { font-size: 20px; font-weight: 600; }
+.MobileHeadingH7 { font-size: 18px; font-weight: 600; }
+
+/* Body Text */
+.DesktopBody20px-Large-Bold { font-size: 20px; font-weight: bold; }
+.DesktopBody20px-Large-Reg { font-size: 20px; font-weight: normal; }
+.DesktopBody18px-Bold { font-size: 18px; font-weight: bold; }
+.DesktopBody18px-Reg { font-size: 18px; font-weight: normal; }
+.DesktopBody16px-Bold { font-size: 16px; font-weight: bold; }
+.DesktopBody16px-Reg { font-size: 16px; font-weight: normal; }
+.MobileBodyRegular { font-size: 16px; font-weight: normal; }
+.MobileBodySmall-Bold { font-size: 14px; font-weight: bold; }
+.MobileBodySmall-Medium { font-size: 14px; font-weight: 500; }
+.MobileBodySmall-Reg { font-size: 14px; font-weight: normal; }
+
+/* Captions */
+.DesktopCaptionBold { font-size: 14px; font-weight: bold; }
+.DesktopCaptionRegular { font-size: 14px; font-weight: normal; }
+.MobileCaptionMedium { font-size: 12px; font-weight: 500; }
+.MobileCaptionReg { font-size: 12px; font-weight: normal; }

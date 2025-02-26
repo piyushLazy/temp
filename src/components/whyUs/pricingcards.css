@@ -1,0 +1,25 @@
+
+  .best-price-heading{
+    width: 745px;
+    height: 45px;
+    flex-grow: 0;
+    /* margin: 0 24px 33px; */
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--black);
+  }
+
+
+
+  .portrait-image{
+    width: 232px;
+    height: 358px;
+    /* margin: 0 0 0 520px; */
+ 
+  } 
