@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/card/travelPackageCard/TravelPackageCard.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/card/travelPackageCard/TravelPackageCard.jsx", "src/components/whyus/RightSection.jsx", "src/components/whyus/LeftSection.jsx"],
   "exclude": ["node_modules"]
 }

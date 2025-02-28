@@ -2,11 +2,16 @@
     width: 100%;
     /* width: 1200px; */
     height: 100%;
+    
+    
 }
 .homePage-body-backgroundslider{
     height:100vh;
 }
 
+.forAddingMargin{
+    margin-top: 100px;
+}
 .homePage-container{
     width: 100%;
     /* min-width: 1200px; */

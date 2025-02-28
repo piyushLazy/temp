@@ -17,7 +17,7 @@ const ContactUsLayout = dynamic(() => import("@/components/contactUs/ContactUsLa
 const HeroSection = dynamic(() => import("@/components/bookNow/HeroSection"), { ssr: false, loading: () => <div>Loading Hero Section...</div> });
 // const FooterLayout = dynamic(() => import("@/components/footer/FooterLayout"), { ssr: false, loading: () => <div>Loading Footer...</div> });
 const AccordionList = dynamic(() => import("@/components/faq/AccordionList"), { ssr: false, loading: () => <div>Loading FAQ...</div> });
-const HomeWhyUs =dynamic(() => import("@/components/whyUs/HomeWhyUs"), { ssr: false, loading: () => <div>Loading HomeWhyUs...</div> });
+const HomeWhyUs =dynamic(() => import("@/components/whyUs/mainWhyUS"), { ssr: false, loading: () => <div>Loading HomeWhyUs...</div> });
 function HomePageMiddle() {
   return (
     <>
@@ -47,11 +47,11 @@ function HomePageMiddle() {
           <AccordionList /> 
         </div>
 
-        <div>
-          {/* <HomeWhyUs /> */}
+        <div  >
+    <HomeWhyUs /> 
         </div>
 
-        <div>
+        <div className="md:mt-24">
           <ContactUsLayout /> 
         </div>
         <div>
