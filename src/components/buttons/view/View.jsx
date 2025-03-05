@@ -1,6 +1,6 @@
 
 import React from "react";
-import BtnSymbol from "../../assets/down-20@3x.png";
+import BtnSymbol from "../../../assets/down-20@3x.png";
 import "./View.css";
 
 function View({ onClick, label = "View" }) {

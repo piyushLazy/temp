@@ -13,9 +13,9 @@ const LeftSection = ({ setSelectedTab }) => {
   const [activeTab, setActiveTab] = useState(null);
 
   return (
-    <div className="bg-gray-100 pt-10 flex flex-col justify-between p-6 rounded-2xl shadow-lg max-w-sm">
+    <div className="bg-gray-100 pt-10 flex flex-col max-sm:gap-16 h-full justify-between p-6 rounded-2xl shadow-lg max-w-sm">
       <div>
-        <h3 className="text-xl font-bold mb-4">Why Choose Us?</h3>
+        <h3 className="md:text-xl font-bold mb-4">Why Choose Us?</h3>
         <p className="italic text-gray-700 mb-4">
           Founded by two avid travelers, <span className="font-bold">Lazy Yatra’s motto</span> is to make you feel lost—not on the road, but in the journey itself...
         </p>

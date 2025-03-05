@@ -12,10 +12,7 @@
     justify-content: space-around;
     align-items: center;
 
-
   }
-  
-
   
   .navbar-left-logo img {
     height: 50px;
@@ -31,18 +28,17 @@
   
   .navbar-link {
     text-decoration: none;
-    color: var(--white);
-    /* color: wheat; */
+    color: var(--black); /* Change this from white to black */
     font-size: 16px;
     font-weight: 500;
-    text-decoration: none; 
     padding-bottom: 4px; 
     transition: border-bottom 0.3s ease; 
-  }
-  
-  .navbar-link:hover {
-    border-bottom: 2px solid var(--white); /* Add a solid border with your desired color */
-  }
+}
+
+.navbar-link:hover {
+    border-bottom: 2px solid var(--black); /* Ensure the hover color is also black */
+}
+
   .navbar-right{
     display: flex;
     gap: 1rem;

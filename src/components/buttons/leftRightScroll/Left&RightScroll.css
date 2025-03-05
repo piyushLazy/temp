@@ -11,7 +11,7 @@
 /* Left scroll icon */
 .navigate-left {
   margin-right: 6px;
-  transform: rotate(180deg);
+  transform: rotate(0deg);
   opacity: 0.6; /* Slightly higher opacity for better visibility */
 }
 

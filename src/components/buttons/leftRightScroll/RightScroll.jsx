@@ -1,11 +1,10 @@
 import React from 'react';
-import leftArrow from '../../assets/navigate-next.svg';
-import Image from "next/image"; 
+import leftArrow from '@/components/assets/navigate-next.svg';
 import './Left&RightScroll.css';
 
 function RightScroll({ onClick }) {
   return (
-    <Image
+    <img 
       src={leftArrow} 
       alt="Right Scroll" 
       className="icon navigate-right" 

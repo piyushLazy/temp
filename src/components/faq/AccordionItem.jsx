@@ -1,37 +1,46 @@
-"use client"; // ✅ Ensures client-side interactivity
-
 import React from "react";
-import Image from 'next/image';
-import "./Accordionitem.css"; // ✅ Make sure the CSS file exists
-import xmark from '../assets/xmark.png';
-import plus from '../assets/plus.png'
-const AccordionItem = ({ 
-  number = "01", 
-  question = "Default Question", 
-  answer = "Default Answer", 
-  isOpen = false, 
-  onToggle 
-}) => {
+import { motion, AnimatePresence } from "framer-motion";
+
+const AccordionItem = ({ number, question, answer, isOpen, onToggle }) => {
   return (
-    <div className="accordion-item">
-      <div 
-        className={`accordion-header ${isOpen ? "open" : ""}`} 
+    <div
+      className={` mt-6   p-4  transition-all ${
+        isOpen ? "bg-blue-50" : "bg-white"
+      }`}
+      style={{ width: "70rem" }} // Set width to 60rem (960px)
+    >
+      {/* Button to toggle accordion */}
+      <button                                                                                                                                                                                                                                                                                                                                                                                                         
         onClick={onToggle}
+        className="flex justify-between items-center w-full text-left"
       >
-        <div className="accordion-number">{number}</div>
-        <div className="accordion-question">{question}</div>
-        <Image
-          src={isOpen 
-            ? xmark  // ✅ Store images in `/public/images/`
-            : plus} 
-          alt={isOpen ? "Close" : "Open"} 
-          className="accordion-icon"
-        />
-      </div>
-      {isOpen && answer && (
-        <div className="accordion-answer">{answer}</div>
-      )}
-      <div className="accordion-divider" />
+        <span className="font-medium text-lg">  
+          <span className="text-3xl text-gray-700 font-serif ">{number}   </span>     <span className="text-xl text-gray-900 font-sans pl-8">   {question}</span> </span>
+        
+        {/* Rotating arrow animation */}
+        <motion.span 
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="text-xl"
+        >
+          ▼
+        </motion.span>
+      </button>
+
+      {/* Animate the answer appearing downward */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="overflow-hidden mt-2 text-gray-600"
+          >
+            <div className="p-2">{answer}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
