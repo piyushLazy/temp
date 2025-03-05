@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import AboutUsMainimg from "@/assets/AboutUsMainImg.png";
+import AboutUsMainimg from "@/app/about-us/assets/AboutUsMainImg.png";
 import WhatMattersTo from './whatMattersTo';
 import MainWhyUS from '@/components/whyUs/mainWhyUS';
 import WhatWeExpect from './whatWeExpect';

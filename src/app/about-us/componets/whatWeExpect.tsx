@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, useInView, useScroll } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 const items = [
   {
@@ -28,45 +28,38 @@ const items = [
 
 const AnimatedList = () => {
   const containerRef = useRef(null);
-  const [scrollSteps, setScrollSteps] = useState(0);
-  const { scrollY } = useScroll({ container: containerRef });
-  const prevScrollY = useRef(0);
+  const { scrollYProgress } = useScroll({ container: containerRef });
 
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = scrollY.get();
-      setScrollSteps((prev) => {
-        if (currentScrollY > prevScrollY.current) {
-          return Math.max(prev - 1, 0);
-        } else if (currentScrollY < prevScrollY.current) {
-          return Math.min(prev + 1, items.length - 1);
-        }
-        return prev;
-      });
-      prevScrollY.current = currentScrollY;
-    };
-  
-    const unsubscribe = scrollY.onChange(handleScroll);
-    return () => unsubscribe();
-  }, []);
-  
+  // Dynamic container height calculation
+  const cardHeight = 150; // Approximate height of each card
+  const overlap = 75; // Overlap by half the card height
+  const containerHeight = items.length * cardHeight - (items.length - 1) * overlap + 100; // Extra space
+
   return (
-    <div className="flex gap-6 p-8 mt-14">
-      <div>
-        <h2 className="text-3xl font-bold">What We Expect from You</h2>
-        <p className="text-gray-600 max-w-lg">
+    <div className="flex max-sm:flex-col gap-6 p-8 mt-14 max-sm:p-4 max-sm:mt-10">
+      {/* Title and description */}
+      <div className="max-sm:w-full">
+        <h2 className="text-3xl max-sm:text-2xl font-bold">What We Expect from You</h2>
+        <p className="text-gray-600 max-w-lg text-base max-sm:text-sm">
           Great travel experiences are a two-way street. To ensure your journey is as magical as planned, we encourage you to:
         </p>
       </div>
-      <div  className=" ">
+
+      {/* Scrollable Container with Responsive Height */}
+      <div
+        ref={containerRef}
+        className="overflow-y-auto relative scrollbar-hide max-sm:h-64 h-auto"
+        style={{ height: `${containerHeight}px` }} // Dynamic height
+      >
         {items.map((item, index) => (
           <AnimatedCard
             key={index}
             index={index}
             title={item.title}
             description={item.description}
-            scrollSteps={scrollSteps}
+            scrollYProgress={scrollYProgress}
+            cardHeight={cardHeight}
+            overlap={overlap}
           />
         ))}
       </div>
@@ -78,37 +71,29 @@ interface AnimatedCardProps {
   index: number;
   title: string;
   description: string;
-  scrollSteps: number;
+  scrollYProgress: any;
+  cardHeight: number;
+  overlap: number;
 }
 
-const AnimatedCard = ({ index, title, description, scrollSteps }: AnimatedCardProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.75, once: false });
+const AnimatedCard = ({ index, title, description, scrollYProgress, cardHeight, overlap }: AnimatedCardProps) => {
+  const cardRef = useRef(null);
 
-  // Calculate overlap
-  const shouldOverlap = scrollSteps > index;
-
+  // Calculate the top position for overlapping
+  const top = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [index * cardHeight, index * (overlap + 20)] // Add small extra spacing
+  );
+  
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={
-        isInView
-          ? {
-              opacity: 1,
-              y: shouldOverlap ? -50 : 0, // Overlap by 50% if needed
-              zIndex: items.length - index, // Ensure proper stacking order
-            }
-          : { opacity: 1, y: 50, zIndex: 0 }
-      }
-      transition={{ duration: 0.6, delay: index * 0.2 }}
-      className="p-6 bg-white rounded-xl shadow-lg border-l-4 border-blue-500 relative"
-      style={{
-        marginTop: shouldOverlap ? '-50%' : '0', // Adjust margin for overlap
-      }}
+      ref={cardRef}
+      style={{ top }}
+      className="p-6 bg-white rounded-xl shadow-lg border-l-12 border-blue-400 sticky w-full mb-4 max-sm:p-4"
     >
-      <h3 className="font-semibold text-lg">{title}</h3>
-      <p className="text-gray-600 mt-2">{description}</p>
+      <h3 className="font-serif text-lg  max-sm:text-sm">{title}</h3>
+      <p className="text-gray-600 mt-2 max-sm:text-sm">{description}</p>
     </motion.div>
   );
 };
