@@ -48,15 +48,15 @@ function Navbar() {
 </div>
 
 {/* Middle Section */}
-<div className="navbar-middle">
+<div className="navbar-middle ">
   {data.mid.map((item) => (
     <Link
       key={item.id}
       href={`/${item.label.toLowerCase().replace(/\s+/g, "-")}`}
-      className="navbar-link"
+      className="navbar-link  "
       onMouseOver={() => item.label === "Packages" && toggleDrawer()}
     >
-      {item.label}
+     <span className="hover:underline"> {item.label}</span>
     </Link>
   ))}
 </div>
@@ -100,7 +100,7 @@ function Navbar() {
     height={24}
   />
   <div className="navbar-right-button">
-    <span className="navbar-right-text">Login</span>
+    <span className="navbar-right-text text-black">Login</span>
     <Image
       src={data.right.loginIcon}
       alt="User Avatar"

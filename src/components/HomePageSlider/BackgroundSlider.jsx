@@ -7,6 +7,7 @@ import Image from "next/image";
 import "./BackgroundSlider.css";
 import cloud from "./images/cloud.png"; // Import cloud image
 import Head from "next/head";
+import FilterComponent from "@/components/hotelFilterSlide/FilterComponent";  
 // Web Images
 import imageW1 from "./images/Background Slider Web _ 1.png";
 import imageW2 from "./images/Background Slider Web _ 2.png";
@@ -56,7 +57,7 @@ const BackgroundSlider = ({ interval = 5000, transition = 1000 }) => {
           <Image src={image} alt={`Slide ${index + 1}`} fill priority className="slide-image" />
         </div>
       ))}
-
+  <FilterComponent/>
       <div className="overlay">
         <div className="cloud-overlay">
           <Image src={cloud} alt="Cloud" className="cloud-1" priority />

@@ -11,7 +11,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-
+     padding: 5px;
+     color:rgb(158, 154, 154);
   }
   
   .navbar-left-logo img {
@@ -33,6 +34,7 @@
     font-weight: 500;
     padding-bottom: 4px; 
     transition: border-bottom 0.3s ease; 
+  
 }
 
 .navbar-link:hover {
@@ -80,6 +82,8 @@
   }
   .navbar-right-questionIcon{
     cursor: pointer;
+    height: 50px;
+    width: 30px;
   }
   
   /* Responsive Design */

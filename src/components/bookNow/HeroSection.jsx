@@ -10,7 +10,7 @@ const HeroSection = ({
 }) => {
   return (
     <div 
-      className="hero-container" 
+      className="hero-container  " 
       style={{ backgroundImage: `url(${backgroundImage})` }} // ✅ Dynamic background
     >
       <div className="hero-overlay">

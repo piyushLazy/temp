@@ -13,7 +13,7 @@ const ToggleSwitch = ({ onToggle }) => {
   };
 
   return (
-    <div className="toggle-container" onClick={handleToggle}>
+    <div className="toggle-container " onClick={handleToggle}>
       <div
         className="toggle-button"
         style={{ left: selected === "Domestic" ? "0" : "50%" }}
