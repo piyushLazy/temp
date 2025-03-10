@@ -11,6 +11,11 @@ import PackageFilterBar from "../../components/packageFilterBar/PackageFilterBar
 import api from "../data/APIHeader/ApiHeader";
 import AccordionList from "../../components/faq/AccordionList";
 import  FooterLayout  from '../footer/FooterLayout'
+
+
+
+
+
 const DetailTourPageMiddle = ({ hotelId }) => {
   // console.log("heyy"+destination, hotelId);
 
@@ -34,7 +39,8 @@ const DetailTourPageMiddle = ({ hotelId }) => {
 
         const result = await response.json();
         console.log(result);
-        
+        console.log("hotes data is " ,hotel);
+
         setHotel(result);
       } catch (error) {
         console.error("Error fetching hotel:", error);
@@ -42,7 +48,6 @@ const DetailTourPageMiddle = ({ hotelId }) => {
         setLoading(false);
       }
     };
-
     fetchHotel();
   }, [hotelId]);
 

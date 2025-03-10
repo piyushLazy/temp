@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-import Lottie from "lottie-react";
 import LoadingAnimation from "../assets/LoadingAnimation.json";
 import FooterLayout from "../footer/FooterLayout";
 import Head from "next/head";
@@ -11,11 +10,12 @@ import BackgroundSlider from "@/components/HomePageSlider/BackgroundSlider";
 
 
 // Dynamically import components without inline loading placeholders
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 const MostPopularPicks = dynamic(() => import("@/components/mostpopularPicks/MostPopularPicks"), { ssr: false });
 const Occasional = dynamic(() => import("@/components/occasional/Occasional"), { ssr: false });
 const PopularHotels = dynamic(() => import("@/components/popularHotels/PopularHotels"), { ssr: false });
 const Destinations = dynamic(() => import("@/components/destinations/Destinations"), { ssr: false });
-const ContactUsLayout = dynamic(() => import("@/components/contactUs/ContactUsLayout"), { ssr: false });
+//const ContactUsLayout = dynamic(() => import("@/components/contactUs/contact"), { ssr: false });
 const HeroSection = dynamic(() => import("@/components/bookNow/HeroSection"), { ssr: false });
 const AccordionList = dynamic(() => import("@/components/faq/AccordionList"), { ssr: false });
 const VideoSection = dynamic(() => import("@/components/videoSection"), { ssr: false });
@@ -73,10 +73,10 @@ function HomePageMiddle() {
     <div>
           <AccordionList /> 
         </div>
- 
+{/*  
         <div className="md:mt-24">
           <ContactUsLayout /> 
-        </div>
+        </div> */}
         <div>
           <HeroSection />
         </div>

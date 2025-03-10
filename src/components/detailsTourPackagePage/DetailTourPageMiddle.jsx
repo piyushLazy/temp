@@ -116,7 +116,7 @@ export default function DetailTourPageMiddle({ packageId }) {
         <CustomizeTripBanner />
       </div>
       <div>
-          <FooterLayout />   Footer Layout  Footer Layout 
+          <FooterLayout />   
         </div>
     </div>
   );

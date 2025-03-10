@@ -33,14 +33,14 @@ const PriceCard_CustomizePackageButton = () => {
           Book Now
         </button>
       </div>
-
+{/* 
       <div className="personalize-text">Want to personalize this trip?</div>
       <button 
         className="customize-package-button" 
         aria-label="Customize this package"
       >
         Customize Package
-      </button>
+      </button> */}
     </div>
   );
 };
