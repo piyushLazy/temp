@@ -1,14 +1,6 @@
-@import "tailwindcss/preflight";
-@tailwind utilities;
-@tailwind utilities;
-
-
-
-@import "tailwindcss";
-
-@plugin "tailwindcss-animate";
-
-
+@import "tailwindcss/preflight";  /* Resets styles (replaces @tailwind base) */
+@import "tailwindcss";            /* Loads Tailwind */
+@tailwind utilities;              /* Keeps utilities */
 
 @custom-variant dark (&:is(.dark *));
 :root {
