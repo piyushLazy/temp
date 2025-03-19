@@ -19,7 +19,7 @@ const Destinations = dynamic(() => import("@/components/destinations/Destination
 const HeroSection = dynamic(() => import("@/components/bookNow/HeroSection"), { ssr: false });
 const AccordionList = dynamic(() => import("@/components/faq/AccordionList"), { ssr: false });
 const VideoSection = dynamic(() => import("@/components/videoSection"), { ssr: false });
-const HomeWhyUs = dynamic(() => import("@/components/whyUs/mainWhyUS"), { ssr: false });
+const HomeWhyUs = dynamic(() => import("@/components/whyus/MainWhyUS"), { ssr: false });
 
 function HomePageMiddle() {
   const [loading, setLoading] = useState(true);

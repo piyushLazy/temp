@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import AboutUsMainimg from "@/app/about-us/assets/AboutUsMainImg.png";
 import WhatMattersTo from './whatMattersTo';
-import MainWhyUS from '@/components/whyUs/mainWhyUS';
+import MainWhyUS from '@/components/whyus/MainWhyUS';
 import WhatWeExpect from './whatWeExpect';
 const Main = () => {
   return (
