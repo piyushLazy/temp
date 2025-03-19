@@ -6,6 +6,7 @@ import AboutUsMainimg from "@/app/about-us/assets/AboutUsMainImg.png";
 import WhatMattersTo from './whatMattersTo';
 import MainWhyUS from '@/components/whyus/MainWhyUS';
 import WhatWeExpect from './whatWeExpect';
+
 const Main = () => {
   return (
     <div className="mx-auto  md:px-14 max-sm:px-8  p-6 w-full">
