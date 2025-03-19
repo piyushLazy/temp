@@ -7,7 +7,7 @@ import Image from "next/image";
 import "./BackgroundSlider.css";
 import cloud from "./images/cloud.png"; // Import cloud image
 import Head from "next/head";
-import FilterComponent from "@/components/hotelFilterSlide/FilterComponent";  
+import FilterComponent from "@/components/mainPageFilter";  
 // Web Images
 import imageW1 from "./images/Background Slider Web _ 1.png";
 import imageW2 from "./images/Background Slider Web _ 2.png";

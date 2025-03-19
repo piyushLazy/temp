@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./FilterComponent.css";
-import apiHeader from '../data/APIHeader/ApiHeader.js';
 
 const FilterComponent = ({
   destination,
@@ -146,3 +145,5 @@ const FilterComponent = ({
 };
 
 export default FilterComponent;
+
+

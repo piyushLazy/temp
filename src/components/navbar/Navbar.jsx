@@ -5,9 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import Drawer from "./Drawer";
 import "./Navbar.css";
-import logo from "../assets/favicon.png";
+import logo from "@/assets/OffToHoloiday-Logo.png";
 import loginIcon from "../assets/avatar-user-36.svg";
 import questionIcon from "../assets/help.svg";
+
 
 function Navbar() {
   const data = {
@@ -22,6 +23,7 @@ function Navbar() {
       { id: 3, label: "About Us" },
       { id: 4, label: "Testimonials" },
       { id: 5, label: "Contact Us" },
+      { id: 6, label: "Blogs" },
     ],
     right: {
       questionIcon: questionIcon,
@@ -39,11 +41,9 @@ function Navbar() {
   return (
     <nav className="navbar-main">
       <div className="navbar-left">
-
      {/* Left Section */}
-
   <Link href="/" className="navbar-left-logo">
-    <Image src={data.left.siteLogo} alt={data.left.siteName} width={40} height={40} />
+    <Image src={data.left.siteLogo} alt={data.left.siteName} className="h-24 w-16" width={60} height={60} />
   </Link>
 </div>
 
@@ -99,8 +99,11 @@ function Navbar() {
     width={24}
     height={24}
   />
+  <Link href = "/auth">
+
   <div className="navbar-right-button">
     <span className="navbar-right-text text-black">Login</span>
+    
     <Image
       src={data.right.loginIcon}
       alt="User Avatar"
@@ -109,6 +112,7 @@ function Navbar() {
       height={36}
     />
   </div>
+  </Link>
 </div>
 
 {/* Drawer Menu */}

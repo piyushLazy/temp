@@ -1,343 +1,390 @@
-"use client"; // Required for Next.js App Router
+// "use client";
 
-import React, { useState } from "react";
-import "./FilterComponent.css";
+// import { useState, useEffect } from "react";
+// import { useSearchParams, useRouter } from "next/navigation";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css"; 
+// import { Slider } from "@/components/ui/slider";
+// import { ChevronDown, Calendar } from "lucide-react";
 
-const FilterComponent = ({ setLocation, setRating, setPriceRange }) => {
-  const cities = ["Jaipur", "Goa", "Mumbai", "Delhi", "Bangalore"];
+// const HotelFilter = ({
+//   destination,
+//   setDestination,
+//   hotelName,
+//   setHotelName,
+//   rating,
+//   setRating,
+//   priceRange,
+//   setPriceRange,
+//   typeOfStay,
+//   setTypeOfStay,
+//   locatedIn,
+//   setLocatedIn,
+//   checkIn,
+//   setCheckIn,
+//   checkOut,
+//   setCheckOut,
+//   handleReset,
+// }) => {
+//   const searchParams = useSearchParams();
+//   const router = useRouter();
 
-  const handleReset = () => {
-    setLocation("");
-    setRating("");
-    setPriceRange([0, 10000]);
-  };
+//   useEffect(() => {
+//     const params = new URLSearchParams(searchParams.toString());
+
+//     if (destination) params.set("destination", destination);
+//     else params.delete("destination");
+
+//     if (checkIn) {
+//       const checkInDate = new Date(checkIn); // ✅ Ensure it's a Date
+//       if (!isNaN(checkInDate)) {
+//         params.set("checkIn", checkInDate.toISOString().split("T")[0]);
+//       }
+//     } else {
+//       params.delete("checkIn");
+//     }
+//     if (checkOut) {
+//       const checkOutDate = new Date(checkOut); // Ensure it's a Date
+//       if (!isNaN(checkOutDate)) {
+//         params.set("checkOut", checkOutDate.toISOString().split("T")[0]);
+//       }
+//     } else {
+//       params.delete("checkOut");
+//     }
+    
+//     router.push(`?${params.toString()}`, { scroll: false });
+//   }, [
+//     destination,
+//     hotelName,
+//     rating,
+//     locatedIn,
+//     typeOfStay,
+//     priceRange,
+//     checkIn,
+//     checkOut,
+//   ]);
+
+//   return (
+//     <div className="max-w-sm p-4 bg-white shadow rounded-lg">
+//       <div className="flex justify-between items-center mb-4">
+//         <p className="text-2xl font-bold">Filter</p>
+//         <button onClick={handleReset} className="text-blue-500 text-sm">
+//           Reset all
+//         </button>
+//       </div>
+
+//       <div className="mb-4">
+//         <label className="block text-sm font-medium">Check-in</label>
+//         <div className="relative mt-1">
+//           <DatePicker
+//             selected={checkIn}
+//             onChange={(date) => setCheckIn(date)}
+//             className="w-full border rounded-3xl p-2 px-4 bg-white"
+//             placeholderText="Select check-in date"
+//             dateFormat="yyyy-MM-dd"
+//           />
+//           <Calendar className="absolute top-3 right-3 h-4 w-4 text-gray-500" />
+//         </div>
+//       </div>
+
+//       <div className="mb-4">
+//         <label className="block text-sm font-medium">Check-out</label>
+//         <div className="relative mt-1">
+//           <DatePicker
+//             selected={checkOut}
+//             onChange={(date) => setCheckOut(date)}
+//             className="w-full border rounded-3xl p-2 px-4 bg-white"
+//             placeholderText="Select check-out date"
+//             dateFormat="yyyy-MM-dd"
+//             minDate={checkIn} // Prevent selecting a past check-out date
+//           />
+//           <Calendar className="absolute top-3 right-3 h-4 w-4 text-gray-500" />
+//         </div>
+//       </div>
+
+//       <div className="mb-4">
+//         <label className="block text-sm font-medium">Destination</label>
+//         <input
+//           type="text"
+//           className="w-full border rounded-3xl p-2 px-4 bg-white"
+//           placeholder="Enter destination"
+//           value={destination}
+//           onChange={(e) => setDestination(e.target.value)}
+//         />
+//       </div>
+
+//       <div className="mb-4">
+//         <label className="block text-sm font-medium">Location</label>
+//         <input
+//           type="text"
+//           className="w-full border rounded-3xl p-2 px-4 bg-white"
+//           placeholder="Enter location"
+//           value={locatedIn}
+//           onChange={(e) => setLocatedIn(e.target.value)}
+//         />
+//       </div>
+
+//       <div className="mb-4">
+//         <label className="block text-sm font-medium">Hotel Name</label>
+//         <input
+//           type="text"
+//           className="w-full border rounded-3xl p-2 px-4 bg-white"
+//           placeholder="Enter hotel name"
+//           value={hotelName}
+//           onChange={(e) => setHotelName(e.target.value)}
+//         />
+//       </div>
+
+//       <div className="mb-4">
+//         <label className="block text-sm font-medium">Star Rating</label>
+//         <select
+//           className="w-full border rounded-3xl p-2 px-4 bg-white appearance-none pr-8"
+//           value={rating}
+//           onChange={(e) => setRating(e.target.value)}
+//         >
+//           <option value="">Select Rating</option>
+//           {[5, 4, 3, 2, 1].map((star) => (
+//             <option key={star} value={star}>
+//               {star} Stars
+//             </option>
+//           ))}
+//         </select>
+//         <ChevronDown className="absolute top-3 right-3 h-4 w-4 text-gray-500" />
+//       </div>
+
+//       <div className="mb-4">
+//         <label className="block text-sm font-medium">Type of Stay</label>
+//         <div className="flex flex-wrap gap-2 mt-2">
+//           {["Hotel", "Resort", "Hostel", "Guesthouse"].map((stay) => (
+//             <button
+//               key={stay}
+//               className={`p-2 border rounded-lg ${
+//                 typeOfStay.includes(stay)
+//                   ? "bg-blue-500 text-white"
+//                   : "bg-gray-200 text-gray-700"
+//               }`}
+//               onClick={() =>
+//                 setTypeOfStay((prev) =>
+//                   prev.includes(stay)
+//                     ? prev.filter((type) => type !== stay)
+//                     : [...prev, stay]
+//                 )
+//               }
+//             >
+//               {stay}
+//             </button>
+//           ))}
+//         </div>
+//       </div>
+
+//       <div className="mb-4">
+//         <label className="block text-sm font-medium">Price Range</label>
+//         <div className="flex gap-2 mt-2">
+//           <input
+//             type="number"
+//             className="w-1/2 p-2 border rounded-lg"
+//             placeholder="Min"
+//             value={priceRange[0]}
+//             onChange={(e) => setPriceRange([e.target.value, priceRange[1]])}
+//           />
+//           <input
+//             type="number"
+//             className="w-1/2 p-2 border rounded-lg"
+//             placeholder="Max"
+//             value={priceRange[1]}
+//             onChange={(e) => setPriceRange([priceRange[0], e.target.value])}
+//           />
+//         </div>
+//         <Slider
+//           min={0}
+//           max={10000}
+//           value={priceRange}
+//           onValueChange={(value) => setPriceRange(value)}
+//         />
+//         <div className="flex justify-between text-xs text-gray-600 mt-1">
+//           <span>₹0</span>
+//           <span>₹10,000</span>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default HotelFilter;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"use client";
+
+import { useState, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"; 
+import { Slider } from "@/components/ui/slider";
+import { ChevronDown, Calendar } from "lucide-react";
+
+const HotelFilter = ({
+  hotels,
+  setFilteredHotels ,
+  
+  destination,
+  setDestination,
+  hotelName,
+  setHotelName,
+  rating,
+  setRating,
+  priceRange,
+  setPriceRange,
+  typeOfStay,
+  setTypeOfStay,
+  locatedIn,
+  setLocatedIn,
+  checkIn,
+  setCheckIn,
+  checkOut,
+  setCheckOut,
+  handleReset,
+}) => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (destination) params.set("destination", destination);
+    else params.delete("destination");
+
+    if (checkIn instanceof Date && !isNaN(checkIn)) {
+      params.set("checkIn", checkIn.toISOString().split("T")[0]);
+    } else {
+      params.delete("checkIn");
+    }
+    if (checkOut instanceof Date && !isNaN(checkOut)) {
+      params.set("checkOut", checkOut.toISOString().split("T")[0]);
+    } else {
+      params.delete("checkOut");
+    }
+    
+    router.push(`?${params.toString()}`, { scroll: false });
+  }, [
+    destination,
+    hotelName,
+    rating,
+    locatedIn,
+    typeOfStay,
+    priceRange,
+    checkIn,
+    checkOut,
+  ]);
+
+  // Filtering Logic
+  useEffect(() => {
+   let filtered = hotels || []; // Ensure it's an array
+
+
+
+    if (destination) {
+      filtered = filtered.filter((hotel) => hotel.location.includes(destination));
+    }
+
+    if (hotelName) {
+      filtered = filtered.filter((hotel) => hotel.name.toLowerCase().includes(hotelName.toLowerCase()));
+    }
+
+    if (rating) {
+      filtered = filtered.filter((hotel) => hotel.rating === Number(rating));
+    }
+
+    if (locatedIn) {
+      filtered = filtered.filter((hotel) => hotel.area.includes(locatedIn));
+    }
+
+    if (typeOfStay.length) {
+      filtered = filtered.filter((hotel) => typeOfStay.includes(hotel.type));
+    }
+
+
+
+if (priceRange[0] !== undefined && priceRange[1] !== undefined) {
+  filtered = filtered.filter(
+    (hotel) => hotel.price >= priceRange[0] && hotel.price <= priceRange[1]
+  );
+}
+
+setFilteredHotels(filtered);
+
+
+  }, [destination, hotelName, rating, locatedIn, typeOfStay, priceRange, checkIn, checkOut]);
 
   return (
-    <div className="filter-component">
-      <div className="filter-header">
-        <span>Filter</span>
-        <button onClick={handleReset}>Reset all</button>
+    <div className="max-w-sm p-4 bg-white shadow rounded-lg">
+      <div className="flex justify-between items-center mb-4">
+        <p className="text-2xl font-bold">Filter</p>
+        <button onClick={handleReset} className="text-blue-500 text-sm">
+          Reset all
+        </button>
       </div>
 
-      {/* Location Dropdown */}
-      <div className="filter-section">
-        <h4>Location</h4>
-        <select onChange={(e) => setLocation(e.target.value)}>
-          <option value="">Select City</option>
-          {cities.map((cityName) => (
-            <option key={cityName} value={cityName}>
-              {cityName}
-            </option>
+      <div className="mb-4">
+        <label className="block text-sm font-medium">Check-in</label>
+        <div className="relative mt-1">
+          <DatePicker selected={checkIn} onChange={(date) => setCheckIn(date)} className="w-full border rounded-3xl p-2 px-4 bg-white" placeholderText="Select check-in date" dateFormat="yyyy-MM-dd" />
+          <Calendar className="absolute top-3 right-3 h-4 w-4 text-gray-500" />
+        </div>
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-sm font-medium">Destination</label>
+        <input type="text" className="w-full border rounded-3xl p-2 px-4 bg-white" placeholder="Enter destination" value={destination} onChange={(e) => setDestination(e.target.value)} />
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-sm font-medium">Hotel Name</label>
+        <input type="text" className="w-full border rounded-3xl p-2 px-4 bg-white" placeholder="Enter hotel name" value={hotelName} onChange={(e) => setHotelName(e.target.value)} />
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-sm font-medium">Star Rating</label>
+        <select className="w-full border rounded-3xl p-2 px-4 bg-white appearance-none pr-8" value={rating} onChange={(e) => setRating(e.target.value)}>
+          <option value="">Select Rating</option>
+          {[5, 4, 3, 2, 1].map((star) => (
+            <option key={star} value={star}>{star} Stars</option>
           ))}
         </select>
+        <ChevronDown className="absolute top-3 right-3 h-4 w-4 text-gray-500" />
       </div>
 
-      {/* Price Range */}
-      <div className="filter-section">
-        <h4>Price range</h4>
-        <div className="price-inputs">
-          <input
-            type="number"
-            min="0"
-            max="10000"
-            onChange={(e) => setPriceRange([Number(e.target.value), 10000])}
-          />
-          <input
-            type="number"
-            min="0"
-            max="10000"
-            onChange={(e) => setPriceRange([0, Number(e.target.value)])}
-          />
+      <div className="mb-4">
+        <label className="block text-sm font-medium">Price Range</label>
+        <div className="flex gap-2 mt-2">
+          <input type="number" className="w-1/2 p-2 border rounded-lg" placeholder="Min" value={priceRange?.[0] || 0} onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])} />
+          <input type="number" className="w-1/2 p-2 border rounded-lg" placeholder="Max" value={priceRange?.[1] || 10000} onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])} />
         </div>
-        <input
-          type="range"
-          min="0"
-          max="10000"
-          onChange={(e) => setPriceRange([0, Number(e.target.value)])}
-        />
-      </div>
-
-      {/* Star Rating Dropdown */}
-      <div className="filter-section">
-        <h4>Star Rating</h4>
-        <select onChange={(e) => setRating(e.target.value)}>
-          <option value="">Choose</option>
-          <option value="3">3 Star</option>
-          <option value="4">4 Star</option>
-          <option value="5">5 Star</option>
-        </select>
+        <Slider min={0} max={10000} value={priceRange} onValueChange={(value) => setPriceRange(value)} />
       </div>
     </div>
   );
 };
 
-export default FilterComponent;
-
-//=============================================================================
-
-// "use client"; // Required for Next.js App Router
-
-// import React from "react";
-// import "./FilterComponent.css";
-// import apiHeader from '../data/APIHeader/ApiHeader.js';
-
-// const FilterComponent = ({
-//   destination, setDestination,
-//   duration, setDuration,
-//   priceRange, setPriceRange,
-//   themes, setThemes,
-//   season, setSeason,
-//   accommodationType, setAccommodationType,
-//   handleReset,
-// }) => {
-
-//   const destinationsList = ["All", "Rajasthan", "Kerala", "Goa", "Kashmir", "Ladakh", "Andaman"];
-  
-//   const handleCheckboxChange = (value, setState) => {
-//     setState((prev) =>
-//       prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
-//     );
-//   };
-
-//   const filteredDestinations = destinationsList
-//     .filter((place) => place.toLowerCase().includes(searchTerm.toLowerCase()))
-//     .sort((a, b) => a.toLowerCase().indexOf(searchTerm.toLowerCase()) - b.toLowerCase().indexOf(searchTerm.toLowerCase()));
-
-//   React.useEffect(() => {
-//     const fetchFilteredData = async () => {
-//       try {
-//         const response = await fetch(`${apiHeader}/api/packages/filter/?state=${destination}&nights=${duration[1]}&min_price=${priceRange[0]}&max_price=${priceRange[1]}&tag=${themes}&budget=${accommodationType}`, {
-//           method: "POST",
-//           headers: { "Content-Type": "application/json" },
-//           body: JSON.stringify({ destination, duration, priceRange, themes, season, accommodationType }),
-//         });
-//         const data = await response.json();
-//         console.log(data);
-//       } catch (error) {
-//         console.error("Error fetching filtered data:", error);
-//       }
-//     };
-
-//     fetchFilteredData();
-//   }, [destination, duration, priceRange, themes, season, accommodationType]);
-
-//   return (
-//     <div className="filter-component">
-//       <div className="filter-header">
-//         <span>Filter</span>
-//         <button onClick={handleReset}>Reset all</button>
-//       </div>
-
-//       {/* Destination Filter */}
-//       <div className="filter-section-1st">
-//         <p className="filter-section-1st-heading">Destination</p>
-//         <input 
-//           type="text" 
-//           placeholder="Search" 
-//           value={searchTerm} 
-//           className="search-input"
-//           onChange={(e) => setSearchTerm(e.target.value)}
-//         />
-
-//         <div className="place-checkboxes">
-//           {filteredDestinations.map((place) => (
-//             <label key={place} className="checkbox-label">
-//               <input 
-//                 type="checkbox" 
-//                 value={place} 
-//                 checked={destination.includes(place)}
-//                 onChange={() => handleCheckboxChange(place, setDestination)} 
-//               />
-//               {place}
-//             </label>
-//           ))}
-//         </div>
-//       </div>
-
-//       {/* Duration Filter */}
-//       <div className="filter-section">
-//         <h4>Duration (in nights)</h4>
-//         <div className="duration-inputs">
-//           <input 
-//             type="text" 
-//             value={duration[0]}  
-//             onChange={(e) => setDuration([Math.max(1, Math.min(15, Number(e.target.value))), duration[1]])} 
-//           />
-//           <input 
-//             type="text" 
-//             value={duration[1]}  
-//             onChange={(e) => setDuration([duration[0], Math.max(1, Math.min(15, Number(e.target.value)))])}  
-//           />
-//         </div>
-//         <input 
-//           type="range" 
-//           min="1" 
-//           max="15" 
-//           value={duration[1]} 
-//           onChange={(e) => setDuration([duration[0], Number(e.target.value)])} 
-//         />
-//       </div>
-
-//       {/* Price Range Filter */}
-//       <div className="filter-section">
-//         <h4>Price range</h4>
-//         <div className="duration-inputs">
-//           <input 
-//             type="text" 
-//             value={priceRange[0]} 
-//             onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])} 
-//           />
-//           <input 
-//             type="text" 
-//             value={priceRange[1]} 
-//             onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])} 
-//           />
-//         </div>
-//         <input 
-//           type="range" 
-//           min="0" 
-//           max="10000" 
-//           value={priceRange[1]} 
-//           onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])} 
-//         />
-//       </div>
-
-//       {/* Themes Filter */}
-//       <div className="filter-section">
-//         <h4>Themes</h4>
-//         <div className="tags">
-//           {["Adventure", "Beach", "Cultural", "Desert Safari", "Eco-friendly", "Family", "Food & Culinary", "Honeymoon", "Luxury", "Mountains", "Relaxation", "Road Trip", "Shopping"].map((theme) => (
-//             <button 
-//               key={theme} 
-//               className={themes.includes(theme) ? "selected" : ""}
-//               onClick={() => handleCheckboxChange(theme, setThemes)}
-//             >
-//               {theme}
-//             </button>
-//           ))}
-//         </div>
-//       </div>
-
-//       {/* Accommodation Type Filter */}
-//       <div className="filter-section">
-//         <h4>Accommodation Type</h4>
-//         <div className="tags">
-//           {["Deluxe", "Luxury", "Camping"].map((type) => (
-//             <button 
-//               key={type} 
-//               className={accommodationType.includes(type) ? "selected" : ""}
-//               onClick={() => handleCheckboxChange(type, setAccommodationType)}
-//             >
-//               {type}
-//             </button>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default FilterComponent;
-
-// "use client";
-
-// import { useState } from "react";
-// import { FaHotel } from "react-icons/fa";
-// import { FaUmbrellaBeach } from "react-icons/fa6";
-// import { FaMapLocationDot } from "react-icons/fa6";
-// import { HiCalendarDateRange } from "react-icons/hi2";
-
-// const FilterComponent = () => {
-//   const [activeTab, setActiveTab] = useState("Packages");
-//   const [destination, setDestination] = useState("");
-//   const [nights, setNights] = useState("");
-
-//   return (
-//     <div className="relative w-full h-screen flex flex-col justify-center items-center z-50 px-4">
-//       {/* Heading Section */}
-//       <div className="relative text-center text-white mb-16 sm:mb-24">
-//         <p className="text-4xl sm:text-6xl font-bold font-serif">Rejuvenation & Peace</p>
-//         <p className="text-md sm:text-lg mt-4 font-serif">Find Peace, Adventure, and Everything in Between.</p>
-//       </div>
-    
-//       {/* Search Box Section */}
-//       <div className="relative bg-gray-100 shadow-lg rounded-xl p-6 flex flex-col md:flex-row items-center w-full max-w-5xl">
-        
-//         {/* Tab Switcher */}
-//         <div className="absolute -top-10 max-sm:left-1/2 sm:left-1/2 md:left-[8.5rem] -translate-x-1/2 flex h-12 bg-gray-100 rounded-t-xl overflow-hidden shadow-md">
-//           <button
-//             className={`flex items-center gap-2 px-6 py-2 text-md font-serif transition-all duration-300 ${
-//               activeTab === "Packages" ? "bg-blue-500 text-white scale-105 shadow-md" : "text-gray-600"
-//             }`}
-//             onClick={() => setActiveTab("Packages")}
-//           >
-//             <FaUmbrellaBeach className=" text-xl  " /> Packages
-//           </button>
-
-//           <button
-//             className={`flex items-center gap-2 px-6 py-2 text-md font-serif transition-all duration-300 ${
-//               activeTab === "Hotels" ? "bg-blue-500 text-white scale-105 shadow-md" : "text-gray-600"
-//             }`}
-//             onClick={() => setActiveTab("Hotels")}
-//           >
-//             <FaHotel className="text-xl" /> Hotels
-//           </button>
-//         </div>
-
-//         {/* Destination Dropdown */}
-//         <div className="flex-1 border-b md:border-r md:border-b-0 border-gray-400 px-4 py-3 w-full">
-//           <label className="flex items-center gap-2 text-gray-600 font-lg">
-//             <FaMapLocationDot className="text-lg" /> Destination
-//           </label>
-//           <div className="relative">
-//             <select
-//               className="w-full mt-1 p-3 rounded-lg focus:outline-none focus:ring-2 text-gray-700 font-sans appearance-none"
-//               value={destination}
-//               onChange={(e) => setDestination(e.target.value)}
-//             >
-//               <option value="">Where do you want to go?</option>
-//               <option value="Rajasthan">Rajasthan</option>
-//               <option value="Kerala">Kerala</option>
-//               <option value="Goa">Goa</option>
-//               <option value="Kashmir">Kashmir</option>
-//             </select>
-//             <span className="absolute right-4 top-4 text-gray-600 pointer-events-none">▼</span>
-//           </div>
-//         </div>
-
-//         {/* Number of Nights Dropdown */}
-//         <div className="flex-1 px-4 py-3 w-full">
-//           <label className="flex items-center text-gray-600 font-lg gap-2">
-//             <HiCalendarDateRange className="text-lg" /> Number of Nights
-//           </label>
-//           <div className="relative">
-//             <select
-//               className="w-full mt-1 p-3 rounded-lg focus:outline-none focus:ring-2 text-gray-700 font-sans appearance-none"
-//               value={nights}
-//               onChange={(e) => setNights(e.target.value)}
-//             >
-//               <option value="">Choose the trip duration.</option>
-//               <option value="1">1 Night</option>
-//               <option value="3">3 Nights</option>
-//               <option value="5">5 Nights</option>
-//               <option value="7">7 Nights</option>
-//             </select>
-//             <span className="absolute right-4 top-4 text-gray-600 pointer-events-none"> ▼ </span>
-//           </div>
-//         </div>
-        
-        
-//         <button className="mt-5 md:hidden w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-3 rounded-lg font-semibold">
-//             Search Packages
-//           </button>
-//       </div>
-
-//       {/* Search Button */}
-//       <button className="absolute max-sm:hidden sm:hidden md:block  -mb-[22.2rem] left-1/2 -translate-x-1/2 px-16 py-5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-serif rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-gradient-to-r hover:from-indigo-500 hover:to-blue-500">
-//         Search Packages
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default FilterComponent;
+export default HotelFilter;

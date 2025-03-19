@@ -16,6 +16,7 @@ function Drawer() {
       { id: "about-us", label: "About Us" },
       { id: "testimonials", label: "Testimonial" },
       { id: "contact-us", label: "Contact Us" },
+      { id: "blogs", label: "Blogs" },
     ],
   };
 

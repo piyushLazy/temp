@@ -30,7 +30,7 @@ function OccasionSwiper({ items, swiperRef }) {
         </OccasionSwiperComponent>
 
         {/* Arrows below the swiper */}
-        <div className="swiper-arrow-container">
+        <div className="flex gap-8 justify-end mt-2">
           <LeftScroll onClick={() => swiperRef.current.swiper.slidePrev()} />
           <RightScroll onClick={() => swiperRef.current.swiper.slideNext()} />
         </div>

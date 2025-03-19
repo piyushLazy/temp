@@ -112,7 +112,7 @@ function PopularHotelsTop({
 
       <div className="Most-Popular-Hotels-footer">
         <ViewAll />
-        <div className="Left-Right-Scroll">
+        <div className="flex gap-8 justify-end mt-2">
           <LeftScroll onClick={() => swiperRef1.current?.swiper.slidePrev()} />
           <RightScroll onClick={() => swiperRef1.current?.swiper.slideNext()} />
         </div>

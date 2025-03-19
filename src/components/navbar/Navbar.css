@@ -16,12 +16,11 @@
   }
   
   .navbar-left-logo img {
-    height: 50px;
-    width: 50px;
-    /* width: auto; */
+    height: 70px; /* Adjust as needed */
+    width: auto;  /* Maintain aspect ratio */
     cursor: pointer;
-  }
-  
+}
+
   .navbar-middle {
     display: flex;
     gap: 1.5rem;
@@ -102,8 +101,8 @@
       display: none; 
     }
     .navbar-left-logo img {
-      height: 30px;
-      width: 30px;
+      height: 50px;
+      width: 50px;
     }
   
     .navbar-right {

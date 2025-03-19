@@ -57,11 +57,11 @@ function MostPopularPicksBottom({
 
   return (
     <div className="BottomSection">
-      <div className="toggleswitch">
+      <div className="toggleswitch mt-4">
         <ToggleSwitch onToggle={handleToggle} />
       </div>
 
-      <div className="TopSection-PlaceSelection">
+      <div className="TopSection-PlaceSelection mt-4">
         <AllPlaces
           selectedPlace={selectedPlace}
           onPlaceSelect={setSelectedPlace}
@@ -92,7 +92,7 @@ function MostPopularPicksBottom({
 
       <div className="Most-Popular-Picks-footer">
         <ViewAll />
-        <div className="Left-Right-Scroll">
+        <div className="flex justify-end gap-8">
           <LeftScroll onClick={() => swiperRef.current?.swiper?.slidePrev()} />
           <RightScroll onClick={() => swiperRef.current?.swiper?.slideNext()} />
         </div>

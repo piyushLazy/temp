@@ -1,15 +1,12 @@
 import React from 'react';
 import leftArrow from '@/components/assets/navigate-next.svg';
 import './Left&RightScroll.css';
+import { FaArrowLeft } from "react-icons/fa";
+
 
 function LeftScroll({ onClick }) {
   return (
-    <img 
-      src={leftArrow} 
-      alt="Left Scroll" 
-      className="icon navigate-left" 
-      onClick={onClick}
-    />
+      <FaArrowLeft className='text-2xl' onClick={onClick}/>
   );
 }
 

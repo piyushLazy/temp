@@ -11,8 +11,8 @@ interface RightSectionProps {
 
 const RightSection: React.FC<RightSectionProps> = ({ selectedTab }) => {
   return (
-    <div className="flex-1  rounded-2xl shadow-lg text-black p-2  max-sm:p-2 md:w-[50rem] max-sm:max-w-xl bg-gray-100">
-  
+    <div className="flex-1  rounded-2xl shadow-lg text-black p-2  max-sm:p-2 md:w-[50rem] max-sm:w-auto bg-gray-100">
+
         {selectedTab === "10K+ Happy Travellers" && <HappyTravelers />}
         {selectedTab === "Best Price Guarantee" && <BestPrice />}
         {selectedTab === "Passionate Service" && <PassionateService />}

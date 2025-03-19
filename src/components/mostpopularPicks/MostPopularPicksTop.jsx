@@ -84,7 +84,7 @@ function MostPopularPicksTop({
 
       <div className="Most-Popular-Picks-footer">
         <ViewAll />
-        <div className="Left-Right-Scroll">
+        <div className="flex gap-8 ">
           <LeftScroll onClick={() => swiperRef.current?.swiper?.slidePrev()} />
           <RightScroll onClick={() => swiperRef.current?.swiper?.slideNext()} />
         </div>
