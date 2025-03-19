@@ -12,7 +12,7 @@ import { GoClock } from "react-icons/go";
 import { motion } from "framer-motion";
 import {useRouter} from "next/navigation"
 import he from "he"
-
+import Image from 'next/image'
 interface Post {
   id: number;
   title: { rendered: string };
@@ -57,7 +57,7 @@ export default function Blog() {
     return content;
   };
 
-  const formattedPosts = posts.map((post: any) => ({
+  const formattedPosts = posts.map((post: Post) => ({
     id: post.id,
     title: post.title.rendered, // Access the rendered title
     excerpt: post.excerpt.rendered, // Access the rendered excerpt
@@ -114,13 +114,15 @@ export default function Blog() {
 >
               {post.featuredImage && (
                 <div className="flex justify-center"    onClick = { ()=> (router̥.push(`blog/${post?.id}`))}>
-                  <img
+                  <Image
                     src={post.featuredImage}
                     alt={post.title}
                     className="w-full h-72 object-cover rounded-md"
                     onError={(e) => {
                       e.currentTarget.src = Placeholder.src;
                     }}
+                    height = {100}
+                    width = {100}
                   />
                 </div>
               )}

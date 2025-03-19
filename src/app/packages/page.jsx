@@ -1,13 +1,15 @@
-import React from 'react'
-// import FilterComponent  from '../../components/packageFilterSlide/FilterComponent'
-import './style.css'
-import AllPackagePage from '../../components/allPackagePage/AllPackagePage'
-function page() {
+import React, { Suspense } from "react";
+import "./style.css";
+import AllPackagePage from "../../components/allPackagePage/AllPackagePage";
+
+function Page() {
   return (
-    <div className='AllPackagecontainer'>
-        <AllPackagePage/>
+    <div className="AllPackagecontainer">
+      <Suspense fallback={<div>Loading...</div>}>
+        <AllPackagePage />
+      </Suspense>
     </div>
-  )
+  );
 }
 
-export default page
+export default Page;

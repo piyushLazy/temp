@@ -5,7 +5,8 @@ import Navbar from '@/components/navbar/Navbar';
 import FooterLayout from '@/components/footer/FooterLayout';
 import TestimonialBg from '@/app/testimonials/assets/tesimonial-bg.png';
 import { reviews } from './data';
-import { FaStar, FaSearch } from 'react-icons/fa';
+import {  FaSearch } from 'react-icons/fa';
+import Image from "next/image"
 import StarRatings from 'react-star-ratings';
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
@@ -87,7 +88,7 @@ const TestimonialCard: React.FC<{ review: Review }> = ({ review }) => (
           <div  className="p-4  rounded-xl shadow-md bg-white mb-4">
             <div className="flex items-center gap-4">
               <div className=" rounded-full bg-gray-300 flex items-center justify-center">
-                 <img className=' w-16 h-16 rounded-full object-fill' src='https://plus.unsplash.com/premium_photo-1670282393309-70fd7f8eb1ef?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
+                 <Image height={100} width={100} alt='image ' className=' w-16 h-16 rounded-full object-fill' src='https://plus.unsplash.com/premium_photo-1670282393309-70fd7f8eb1ef?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
                
               </div>
               <div>

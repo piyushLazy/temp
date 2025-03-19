@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Eye, EyeOff } from "lucide-react";
 import { toast } from "sonner"; // Import Sonner toast
-import Link from "next/link";
 
 interface SignupProps {
   setSignup: (value: boolean) => void;

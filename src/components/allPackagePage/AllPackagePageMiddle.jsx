@@ -129,7 +129,7 @@ function AppPackagePageMiddle() {
             <Lottie animationData={LoadingAnimation} loop={true} style={{ width: 200, height: 200 }} />
           </div>
         ) : (
-          packages.map((pkg) => (<TravelPackageCard key={pkg.id} data={pkg} />))
+          packages.map((pkg, index) => (<TravelPackageCard key={index} data={pkg} />))
         )}
       </div>
     </div>

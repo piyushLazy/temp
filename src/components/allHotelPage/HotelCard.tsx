@@ -5,7 +5,6 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
 import ReactStars from "react-stars";
 import { CgGym } from "react-icons/cg";
 import { LuSquareParking } from "react-icons/lu";
@@ -36,17 +35,17 @@ const HotelCard = ({ data }: { data: Hotel }) => {
               autoplay={{ delay: 3000, disableOnInteraction: false }} // Auto-slide every 3s
               className="h-full w-full"
             >
-              {data.images.map((img, index) => (
-                <SwiperSlide key={index}>
-                  <Image
-                  src={`${BASE_URL}${img.replace(/%20/g, " ")}`} // Fix spaces and append Base URL
-                  alt={`Hotel Image ${index + 1}`}
-                  layout="fill"
-                  className="rounded-lg object-cover"
-                  unoptimized // TEMPORARY: Helps debug Next.js image processing
-                />
-                </SwiperSlide>
-              ))}
+       {data.images.map((img, index) => (
+  <SwiperSlide key={`${data.id}-${index}`}> {/* Use a unique combination */}
+    <Image
+      src={`${BASE_URL}${img.replace(/%20/g, " ")}`}
+      alt={`Hotel Image ${index + 1}`}
+      layout="fill"
+      className="rounded-lg object-cover"
+      unoptimized
+    />
+  </SwiperSlide>
+))}
             </Swiper>
           ) : (
             <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-500">

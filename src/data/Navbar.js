@@ -1,8 +1,7 @@
 import logo from '../assets/favicon.png';
 import loginIcon from '../assets/avatar-user-36.svg';
 import questionIcon from '../assets/help.svg'
-import { FiMenu } from "react-icons/fi";
-import Drawer from '../components/nav-bar/Drawer';
+
 const data = {
   left: {
     siteLogo: logo,

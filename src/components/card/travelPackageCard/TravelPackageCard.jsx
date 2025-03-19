@@ -1,7 +1,7 @@
 import React from 'react';
 import './TravelPackageCard.css';
 
-const TravelPackageCard: React.FC = () => {
+const TravelPackageCard = () => {
   return (
     <div className="travel-package-card">
       <div className="image-container"></div>

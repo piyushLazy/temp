@@ -67,11 +67,13 @@ const AnimatedList = () => {
   );
 };
 
+import { MotionValue } from 'framer-motion';
+
 interface AnimatedCardProps {
   index: number;
   title: string;
   description: string;
-  scrollYProgress: any;
+  scrollYProgress: MotionValue<number>;
   cardHeight: number;
   overlap: number;
 }

@@ -9,6 +9,7 @@ import Navbar from "@/components/navbar/Navbar";
 import LoadingAnimation from "@/assets/LoadingAnimation.json";
 import dynamic from "next/dynamic";
 import { GoClock } from "react-icons/go";
+import Image from 'next/image'
 import he from "he";
 import Placeholder from "@/app/blogs/assets/placeholder.png"; // Adjust the path as necessary
 import { useRouter } from "next/navigation";
@@ -113,7 +114,7 @@ const BlogPost = () => {
         const sortedPosts = data
           .sort((a: { date: string | number | Date; }, b: { date: string | number | Date; }) => new Date(b.date).getTime() - new Date(a.date).getTime())
           .slice(0, 3)
-          .map((post: any) => ({
+          .map((post: { _embedded?: { "wp:featuredmedia"?: [{ source_url: string }] } }) => ({
             ...post,
             featuredImage: post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || Placeholder.src,
           }));
@@ -279,13 +280,15 @@ const BlogPost = () => {
               >
                 {recentPost.featuredImage && (
                   <div className="flex justify-center" onClick={() => router.push(`${recentPost?.id}`)}>
-                    <img
+                    <Image
                       src={recentPost?.featuredImage}
                       alt={recentPost?.title.rendered}
                       className="w-full h-48 md:w-96 md:h-44 object-cover rounded-md"
                       onError={(e) => {
                         e.currentTarget.src = Placeholder.src;
                       }}
+                      height = {100}
+                      width = {100}
                     />
                   </div>
                 )}

@@ -104,7 +104,7 @@ function PopularHotelsTop({
         onSlideChange={handleSlideChange}
       >
         {filteredPackagesBasedOnDomestic.map((pkg, index) => (
-          <CustomSwiperSlide key={pkg.id+pkg.destination|| `fallback-${index}`}>
+          <CustomSwiperSlide key={index}>
             <MostPopularHotelCard item={pkg} onViewDetails={() => handleViewDetails(pkg)} onBookNow={() => handleBookNow(pkg)} />
           </CustomSwiperSlide>
         ))}
