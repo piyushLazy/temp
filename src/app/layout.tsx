@@ -1,6 +1,6 @@
 // src/app/layout.tsx (Server Component)
 import { Geist, Geist_Mono, Inter } from "next/font/google";
-import "./globals.css";
+import "./global.css";
 import { Metadata } from "next";
 import QueryProvider from "@/components/QueryProvider"; // Move query logic here
 import { Toaster } from "@/components/ui/sonner";

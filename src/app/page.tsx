@@ -5,6 +5,7 @@ import HomePage from '../components/homepage/HomePage';
 // import FilterComponent from '../components/packageFilterSlide/FilterComponent' ;
 // import FilterComponent from '../components/hotelFilterSlide/FilterComponent';
 import './page.css'
+
 export default function Home() {
   return (
     <div className='homepage'>

@@ -43,7 +43,7 @@ function Navbar() {
       <div className="navbar-left">
      {/* Left Section */}
   <Link href="/" className="navbar-left-logo">
-    <Image src={data.left.siteLogo} alt={data.left.siteName} className="h-24 w-16" width={60} height={60} />
+    <Image src={data.left.siteLogo} alt={data.left.siteName}  width={60} height={60} />
   </Link>
 </div>
 
